@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07111c" />
+  <meta name="description" content="An interactive virtual demonstration of the Remote Integrated Water Purifier Management System." />
+  <title>RIWPM — Water, understood.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="intro" id="intro">
+    <div class="intro-grid"></div><div class="intro-water"></div>
+    <div class="intro-inner">
+      <a class="brand intro-brand" href="#home"><span class="brand-mark">≈</span> AQUA / SYSTEMS</a>
+      <div class="intro-content">
+        <div class="eyebrow"><span class="pulse-dot"></span> ENGINEERING PROJECT · 2026</div>
+        <h1>Remote integrated<br/><span>water purifier</span><br/>management system</h1>
+        <p class="intro-subtitle">Smart Water Quality Monitoring and Remote Device Management</p>
+        <div class="academic-card">
+          <div class="academic-block"><div class="micro-label">PROJECT TEAM</div><div class="team-names"><span>Shodhan S Shetty</span><span>Shashmitha</span><span>V Poorvie Pragna</span><span>Mohammed Sinan</span></div></div>
+          <div class="academic-divider"></div>
+          <div class="academic-block guide-block"><div class="micro-label">PROJECT GUIDE</div><div class="guide-name">Dr Prasanna Kumar C</div></div>
+        </div>
+        <button class="button button-primary enter-button" id="enterProject">Enter project <span>↗</span></button>
+      </div>
+      <div class="intro-side-note"><span>01 — 07</span><i></i><span>VIRTUAL DEMONSTRATION</span></div>
+      <div class="intro-watermark">RIWPM<span>·</span>01</div>
+    </div>
+  </div>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">≈</span> AQUA / SYSTEMS</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home">Overview</a><a href="#model">3D model</a><a href="#components">Components</a><a href="#workflow">How it works</a><a href="#dashboard">Dashboard</a><a href="#mobile">Mobile app</a><a href="#about">Project</a>
+    </nav>
+    <div class="topbar-right"><span class="demo-chip"><i></i> DEMO MODE</span><button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button></div>
+  </header>
+
+  <main id="home">
+    <section class="hero section-wrap">
+      <div class="hero-copy"><div class="eyebrow"><span class="pulse-dot"></span> REMOTE INTEGRATED WATER PURIFIER MANAGEMENT</div>
+        <h2>Water, <em>understood.</em></h2><p>A virtual window into a smarter purifier. Explore how quality sensing, device health and remote visibility come together.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#model">Explore the system <span>↗</span></a><a class="text-link" href="#workflow">See how it works <span>↓</span></a></div>
+      </div>
+      <div class="hero-aside"><div class="live-label"><span class="pulse-dot"></span> SIMULATED SYSTEM STATUS</div><div class="hero-aside-main"><span class="status-orb"></span><div><strong id="heroStatus">System healthy</strong><small>Virtual demonstration active</small></div></div><div class="hero-aside-bottom"><span>MODEL</span><b>RIWPM / 01</b><span>MODE</span><b>SIMULATED</b></div></div>
+      <div class="hero-bottomline"><span>01 / PROJECT OVERVIEW</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
+    </section>
+
+    <section class="section-wrap model-section" id="model">
+      <div class="section-heading"><div><div class="eyebrow">01 — SYSTEM EXPLORER</div><h2>A system you can <em>see inside.</em></h2></div><div class="section-heading-note">Drag to rotate · Scroll to zoom · Select a component to inspect</div></div>
+      <div class="model-layout">
+        <div class="model-stage" id="modelStage">
+          <div class="stage-top"><span><i class="pulse-dot"></i> PURIFICATION LOOP</span><span>AXONOMETRIC VIEW <b>↗</b></span></div>
+          <div class="model-canvas" id="modelCanvas" aria-label="Interactive purifier system model">
+            <svg class="purifier-svg" id="purifierSvg" viewBox="0 0 900 600" role="img" aria-label="Interactive 3D-style water purifier and monitoring system">
+              <defs>
+                <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#e9f3fa"/><stop offset=".35" stop-color="#8da8ba"/><stop offset=".68" stop-color="#e4f2fa"/><stop offset="1" stop-color="#617d91"/></linearGradient>
+                <linearGradient id="darkMetal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#31495b"/><stop offset="1" stop-color="#101d29"/></linearGradient>
+                <linearGradient id="glass" x1="0" x2="1"><stop stop-color="#46d4f4" stop-opacity=".04"/><stop offset=".5" stop-color="#6eeaff" stop-opacity=".26"/><stop offset="1" stop-color="#44c7e5" stop-opacity=".05"/></linearGradient>
+                <linearGradient id="water" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#5de8ff"/><stop offset="1" stop-color="#138fc8"/></linearGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="softGlow"><feGaussianBlur stdDeviation="11"/></filter>
+              </defs>
+              <!-- floor shadow -->
+              <ellipse cx="465" cy="504" rx="350" ry="48" fill="#06101a" opacity=".78"/><ellipse cx="465" cy="500" rx="280" ry="24" fill="#40ccef" opacity=".1" filter="url(#softGlow)"/>
+              <!-- flowing plumbing -->
+              <g class="pipe"><path d="M107 309 H194 V274 H249"/><path d="M316 274 H363 V303 H431"/><path d="M510 303 H563 V267 H618"/><path d="M690 267 H748 V323 H806"/><path d="M455 320 V369 H503"/></g>
+              <g class="water-flow"><path d="M107 309 H194 V274 H249"/><path d="M316 274 H363 V303 H431"/><path d="M510 303 H563 V267 H618"/><path d="M690 267 H748 V323 H806"/></g>
+              <!-- inlet -->
+              <g class="component" data-component="inlet"><path d="M49 292 H105 V326 H49 Z" fill="url(#darkMetal)" stroke="#7995a7"/><path d="M49 292 H71 V326 H49 Z" fill="#223746" stroke="#87a4b4"/><path d="M47 299 H37 V319 H47" fill="none" stroke="#9cb2c0" stroke-width="3"/><circle cx="106" cy="309" r="7" fill="#48d9fa" filter="url(#glow)"/><text x="39" y="357" class="svg-label">WATER INLET</text></g>
+              <!-- filters -->
+              <g class="component" data-component="prefilter"><path d="M229 230 L260 213 L328 232 L297 250 Z" fill="#b7cbd7"/><path d="M229 230 V365 L261 385 V213 Z" fill="url(#metal)"/><path d="M261 213 L328 232 V367 L261 385 Z" fill="url(#glass)" stroke="#78b7cc" stroke-width="2"/><path d="M272 232 V367 M284 228 V371 M297 224 V374 M310 229 V371" stroke="#68d7ee" opacity=".45"/><path d="M236 366 L261 382 L328 363" fill="none" stroke="#92adbb" stroke-width="3"/><text x="239" y="408" class="svg-label">PRE-FILTER</text></g>
+              <g class="component" data-component="carbon"><path d="M400 255 L431 237 L515 258 L483 277 Z" fill="#526373"/><path d="M400 255 V355 L431 375 V237 Z" fill="#263441" stroke="#768e9e"/><path d="M431 237 L515 258 V358 L431 375 Z" fill="url(#darkMetal)" stroke="#7990a0" stroke-width="2"/><path d="M443 258 L499 273 V341 L443 356 Z" fill="#1b2a36"/><path d="M449 268 L492 280 M449 281 L492 293 M449 294 L492 306 M449 307 L492 319 M449 320 L492 332" stroke="#50c9e3" opacity=".24"/><text x="421" y="402" class="svg-label">CARBON STAGE</text></g>
+              <g class="component" data-component="membrane"><path d="M585 222 L615 205 L691 226 L661 244 Z" fill="#b8c9d2"/><path d="M585 222 V356 L615 375 V205 Z" fill="url(#metal)"/><path d="M615 205 L691 226 V360 L615 375 Z" fill="url(#glass)" stroke="#7bc4d8" stroke-width="2"/><path d="M626 229 V353 M635 232 V355 M644 234 V357 M653 237 V358 M662 239 V360" stroke="#7de8f4" opacity=".5"/><text x="610" y="398" class="svg-label">MEMBRANE</text></g>
+              <!-- sensor pods on the line -->
+              <g class="component" data-component="tds"><path d="M350 266 V230 Q350 219 361 219 H386 Q397 219 397 230 V266" fill="#182b39" stroke="#61cce0" stroke-width="2"/><circle cx="373" cy="238" r="8" fill="#45d7f5" opacity=".8"/><path d="M373 246 V275" stroke="#72e5f4" stroke-width="3"/><text x="346" y="202" class="svg-small">TDS</text></g>
+              <g class="component" data-component="ph"><path d="M526 295 V333 Q526 343 537 343 H550 Q561 343 561 333 V295" fill="#1b2d3a" stroke="#66cce4" stroke-width="2"/><path d="M543 342 V368" stroke="#73e4ee" stroke-width="3"/><circle cx="543" cy="306" r="6" fill="#6ee8ed"/><text x="529" y="388" class="svg-small">pH</text></g>
+              <!-- pump -->
+              <g class="component" data-component="pump"><path d="M328 422 L360 401 L433 418 L401 440 Z" fill="#8399a8"/><path d="M328 422 V472 L360 493 V401 Z" fill="url(#darkMetal)" stroke="#7590a2"/><path d="M360 401 L433 418 V468 L360 493 Z" fill="#253c4d" stroke="#8ba2b0" stroke-width="2"/><ellipse cx="385" cy="446" rx="25" ry="17" fill="#10202c" stroke="#57d4ed" stroke-width="2"/><circle cx="385" cy="446" r="6" fill="#5bdfff"/><path d="M433 430 H455 V449 H433" fill="#344c5d" stroke="#8ca8b9"/><text x="343" y="522" class="svg-label">12V DC PUMP</text><circle cx="412" cy="433" r="3" fill="#69edac" class="led-blink"/></g>
+              <!-- control box -->
+              <g class="component" data-component="esp32"><path d="M550 383 L584 360 L718 389 L683 414 Z" fill="#829bad"/><path d="M550 383 V473 L584 495 V360 Z" fill="#263a49" stroke="#8ca6b3"/><path d="M584 360 L718 389 V479 L584 495 Z" fill="#162734" stroke="#7ba3b4" stroke-width="2"/><path d="M605 383 L684 399 V465 L605 448 Z" fill="#0a1720" stroke="#4d788b"/><rect x="618" y="398" width="54" height="42" rx="4" fill="#104357" stroke="#47d2ec"/><text x="624" y="415" class="board-text">ESP32</text><text x="626" y="428" class="board-sub">DEVKIT V1</text><path d="M643 398 V386 M656 402 V390 M618 414 H607 M673 427 H684 M633 440 V452 M654 440 V455" stroke="#6be7f4" stroke-width="2"/><circle cx="695" cy="411" r="3" fill="#72f0aa" class="led-blink"/><text x="600" y="526" class="svg-label">CONTROLLER</text></g>
+              <!-- oled -->
+              <g class="component" data-component="oled"><path d="M649 160 L669 147 L758 166 L738 180 Z" fill="#849eae"/><path d="M649 160 V223 L669 236 V147 Z" fill="#233846" stroke="#7797a9"/><path d="M669 147 L758 166 V228 L669 236 Z" fill="#101e28" stroke="#72c7d8" stroke-width="2"/><path d="M682 164 L742 177 V211 L682 199 Z" fill="#0b3b47" stroke="#3fc8d8"/><text x="689" y="180" class="oled-text">TDS 420</text><text x="689" y="194" class="oled-text">pH  7.1</text><text x="676" y="253" class="svg-small">OLED DISPLAY</text></g>
+              <!-- leak detector -->
+              <g class="component" data-component="leak"><path d="M496 484 l17 -9 17 9 v20 l-17 9 -17 -9 Z" fill="#253b49" stroke="#62d3e8" stroke-width="2"/><path d="M502 487 l11 5 11 -5 M513 492 v14" fill="none" stroke="#52dcf5" stroke-width="2"/><path d="M513 475 V464" stroke="#84b3c1" stroke-width="2"/><text x="482" y="539" class="svg-label">LEAK DETECTOR</text></g>
+              <!-- flow and direction arrows -->
+              <g class="flow-arrows"><path d="M157 299 l10 10 -10 10 M374 293 l10 10 -10 10 M569 257 l10 10 -10 10 M754 313 l10 10 -10 10" fill="none" stroke="#b4f6ff" stroke-width="2"/></g>
+              <!-- sensor bus -->
+              <g class="signal-lines"><path d="M374 219 V140 H622 V360"/><path d="M543 367 V346 H603 V360"/><path d="M680 147 V135 H694 V360"/><path d="M513 464 H537 V465 H550"/></g>
+              <g class="signal-points"><circle r="4"><animateMotion dur="2.5s" repeatCount="indefinite" path="M374 219 V140 H622 V360"/></circle><circle r="4"><animateMotion dur="2.8s" repeatCount="indefinite" path="M543 367 V346 H603 V360"/></circle><circle r="4"><animateMotion dur="3s" repeatCount="indefinite" path="M680 147 V135 H694 V360"/></circle></g>
+              <!-- outlet -->
+              <g class="component" data-component="outlet"><path d="M806 306 H856 V340 H806 Z" fill="url(#darkMetal)" stroke="#809aab"/><path d="M856 306 H876 V340 H856" fill="#233a49" stroke="#8fa7b6"/><circle cx="806" cy="323" r="7" fill="#56e0ff" filter="url(#glow)"/><path d="M870 312 C883 321 881 331 873 339" fill="none" stroke="#65e5fb" stroke-width="3"/><text x="817" y="370" class="svg-label">WATER OUTLET</text></g>
+              <!-- wifi waves -->
+              <g class="wifi-waves"><path d="M732 109 Q763 79 794 109 M740 120 Q763 98 786 120 M750 131 Q763 119 776 131"/><circle cx="763" cy="139" r="3" fill="#53dff7"/></g>
+            </svg>
+            <div class="model-caption"><span>FIG 01</span><span>VIRTUAL PURIFICATION + MONITORING ASSEMBLY</span></div>
+          </div>
+          <div class="stage-controls"><button id="rotateModel" class="icon-button" title="Toggle model rotation">⟳</button><button id="zoomOut" class="icon-button" title="Zoom out">−</button><button id="zoomIn" class="icon-button" title="Zoom in">+</button><button id="resetModel" class="icon-button" title="Reset view">⌖</button><span class="stage-hint">SELECT A PART TO EXPLORE</span></div>
+        </div>
+        <aside class="model-inspector" id="modelInspector"><div class="inspector-top"><span class="micro-label">COMPONENT INSPECTOR</span><span class="inspector-index">01 / 12</span></div><div class="inspector-icon" id="inspectorIcon">◈</div><div class="micro-label" id="inspectorType">CORE CONTROLLER</div><h3 id="inspectorName">ESP32 DevKit V1</h3><p id="inspectorText">The central controller gathers sensor readings, evaluates device conditions and coordinates the system response.</p><div class="inspector-spec"><span>ROLE</span><b id="inspectorRole">Data processing</b><span>CONNECTION</span><b id="inspectorConnection">Sensor inputs · configurable GPIO</b><span>STATUS</span><b class="spec-status"><i></i> VIRTUAL MODEL</b></div><button class="text-link" id="openComponent">Full component details <span>↗</span></button></aside>
+      </div>
+    </section>
+
+    <section class="section-wrap component-section" id="components">
+      <div class="section-heading"><div><div class="eyebrow">02 — HARDWARE LIBRARY</div><h2>Every part has a <em>purpose.</em></h2></div><p class="heading-description">Select a component to see how it contributes to the complete system. Pin assignments remain configurable until confirmed against the physical build.</p></div>
+      <div class="component-browser"><div class="component-tabs" id="componentTabs"><button class="active" data-filter="all">All components <span>17</span></button><button data-filter="controller">Controller <span>1</span></button><button data-filter="water">Water quality <span>5</span></button><button data-filter="safety">Safety & power <span>3</span></button><button data-filter="output">Outputs <span>4</span></button><button data-filter="other">Other <span>4</span></button></div><div class="component-grid" id="componentGrid"></div></div>
+    </section>
+
+    <section class="workflow-section" id="workflow"><div class="section-wrap workflow-wrap"><div class="section-heading"><div><div class="eyebrow">03 — OPERATING PRINCIPLE</div><h2>From water to <em>insight.</em></h2></div><div class="section-heading-note">A virtual walkthrough of the physical system’s intended operation</div></div>
+      <div class="workflow-layout"><div class="steps-list" id="stepsList"></div><div class="workflow-visual"><div class="workflow-visual-top"><span><i class="pulse-dot"></i> SYSTEM SEQUENCE</span><span id="stepCounter">01 / 07</span></div><div class="workflow-animation" id="workflowAnimation"><div class="workflow-waterline"></div><div class="workflow-icon" id="workflowIcon">◉</div><div class="workflow-route"><i></i><i></i><i></i></div><div class="workflow-node" id="workflowNode">WATER MONITORING</div></div><h3 id="workflowTitle">Water enters the purifier</h3><p id="workflowDescription">Incoming water passes through the purification path. The TDS, pH, turbidity, temperature and flow sensors observe key parameters at their configured measurement points.</p><div class="workflow-footer"><button class="icon-button" id="prevStep">←</button><button class="button button-small" id="playSteps">Play sequence <span>▶</span></button><button class="icon-button" id="nextStep">→</button><span class="sim-tag">DEMONSTRATION</span></div></div></div>
+    </div></section>
+
+    <section class="section-wrap dashboard-section" id="dashboard"><div class="section-heading"><div><div class="eyebrow">04 — LIVE PROJECT DASHBOARD</div><h2>See the system <em>respond.</em></h2></div><div class="demo-notice"><span>ⓘ</span> DEMONSTRATION DATA · SIMULATED IN THIS WEBSITE</div></div>
+      <div class="dashboard-toolbar"><div><span class="live-dot"></span><b id="dashboardState">All systems nominal</b><span class="updated-at">Updated just now · browser simulation</span></div><div class="toolbar-actions"><label class="select-wrap"><span>SIMULATE CONDITION</span><select id="faultSelect"><option value="tds">TDS approaching threshold</option><option value="ph">Abnormal pH</option><option value="turbidity">High turbidity</option><option value="leak">Leak detected</option><option value="overload">Pump overload</option><option value="dryrun">Dry run condition</option><option value="voltage">Low voltage</option><option value="filter">Filter replacement warning</option></select></label><button class="button button-danger" id="simulateFault">Simulate fault <span>↗</span></button><button class="button button-quiet" id="resetSimulation">Reset simulation</button></div></div>
+      <div class="metric-grid" id="metricGrid"></div>
+      <div class="dashboard-lower"><div class="chart-card"><div class="card-heading"><div><span class="micro-label">WATER QUALITY TREND</span><h3>Quality score <span class="chart-range">LAST 12 SAMPLES</span></h3></div><span class="chart-value" id="qualityTrendValue">72<span>/100</span></span></div><div class="chart-legend"><span><i class="legend-cyan"></i> Overall score</span><span><i class="legend-muted"></i> Target range</span></div><div class="chart-area" id="qualityChart"></div><div class="chart-x-labels"><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>NOW</span></div></div>
+        <div class="health-card"><div class="card-heading"><div><span class="micro-label">DEVICE HEALTH</span><h3>Operating conditions</h3></div><span class="health-mark">◉</span></div><div class="health-list" id="healthList"></div><div class="filter-health"><div class="filter-top"><span>FILTER HEALTH</span><b id="filterPercent">48%</b></div><div class="progress-track"><i id="filterProgress" style="width:48%"></i></div><small>Estimated demonstration value</small></div></div>
+      </div>
+      <div class="alert-card"><div class="alert-heading"><div><span class="micro-label">EVENT LOG</span><h3>Alert history</h3></div><span class="event-count" id="eventCount">03 EVENTS</span></div><div class="alert-list" id="alertHistory"></div><div class="billing-note"><span>ⓘ</span><p>Monitoring warnings do not automatically create service charges. A service charge would require a confirmed device fault or qualifying critical service condition.</p></div></div>
+    </section>
+
+    <section class="mobile-section" id="mobile"><div class="section-wrap mobile-wrap"><div class="mobile-copy"><div class="eyebrow">05 — REMOTE VISIBILITY</div><h2>One clear view,<br/><em>wherever you are.</em></h2><p>A concept mobile dashboard shows how the physical system could present its status to an operator. Every reading and notification here is simulated.</p><div class="mobile-features"><div><span>01</span><b>At-a-glance quality</b><small>Water parameters and purifier health</small></div><div><span>02</span><b>Useful notifications</b><small>Warnings and critical conditions</small></div><div><span>03</span><b>Service context</b><small>Operating hours and filter estimate</small></div></div><div class="wifi-transmission"><span class="wifi-icon">⌁</span><div><b>VIRTUAL WI-FI SIGNAL</b><small>Illustrative communication path</small></div><span class="signal-bars"><i></i><i></i><i></i></span></div></div>
+        <div class="phone-scene"><div class="phone-glow"></div><div class="phone-link-orbit"><span>⌁</span></div><div class="phone" id="phone"><div class="phone-frame"><div class="phone-island"></div><div class="phone-screen"><div class="phone-status"><span>9:41</span><span>●●● ◖</span></div><div class="app-top"><span class="app-logo">≈</span><span>RIWPM <small>HOME SYSTEM</small></span><button aria-label="Notifications">♧</button></div><div class="app-greeting"><small>GOOD AFTERNOON</small><b>Your water, at a glance.</b></div><div class="app-quality"><div><small>WATER QUALITY</small><b id="phoneQuality">Good</b><span>Score <strong id="phoneScore">72</strong> / 100</span></div><div class="quality-ring"><span id="phoneRing">72</span></div></div><div class="app-reading-grid"><div><small>TDS</small><b id="phoneTds">420 <i>ppm</i></b></div><div><small>pH LEVEL</small><b id="phonePh">7.1</b></div><div><small>TURBIDITY</small><b id="phoneTurbidity">1.4 <i>NTU</i></b></div><div><small>TEMPERATURE</small><b id="phoneTemp">24.8 <i>°C</i></b></div></div><div class="app-pump"><span class="pump-check">✓</span><div><small>PURIFIER STATUS</small><b id="phonePump">Pump running normally</b></div><span class="app-chevron">›</span></div><div class="app-notify-title">RECENT NOTIFICATIONS <a href="#dashboard">SEE ALL</a></div><div class="app-notification" id="phoneNotification"><span class="notification-icon">⌁</span><div><b>System operating normally</b><small>Demonstration · Just now</small></div></div><div class="app-bottom-nav"><span class="selected">◉<small>Home</small></span><span>⌑<small>Trends</small></span><span>⚙<small>Settings</small></span></div></div></div><div class="phone-label"><span class="pulse-dot"></span> SIMULATED MOBILE APPLICATION</div></div></div>
+      </div></section>
+
+    <section class="section-wrap about-section" id="about"><div class="section-heading"><div><div class="eyebrow">06 — PROJECT NOTES</div><h2>Designed for better <em>decisions.</em></h2></div><p class="heading-description">An engineering concept for bringing water quality awareness and purifier condition monitoring into one connected view.</p></div>
+      <div class="about-intro"><div class="about-abstract">WATER<br/><em>ISN'T</em><br/>A BLACK BOX<span>↘</span></div><div class="about-copy"><div class="micro-label">PROJECT INTRODUCTION</div><p>Remote Integrated Water Purifier Management System demonstrates how a controller can collect water quality and equipment health data, evaluate conditions and make useful information available to an operator. This website is a fully virtual presentation model. Its sensor values are generated locally for demonstration.</p><div class="project-facts"><div><small>PROJECT TYPE</small><b>Final-year engineering project</b></div><div><small>DEMONSTRATION MODE</small><b>Self-contained simulation</b></div><div><small>CORE CONTROLLER</small><b>ESP32 DevKit V1 (30-pin)</b></div></div></div></div>
+      <div class="about-grid"><article><span class="about-number">01</span><div class="micro-label">PROBLEM STATEMENT</div><h3>Visibility arrives too late.</h3><p>Without convenient monitoring, water quality changes, leakage and pump issues may go unnoticed until someone checks the purifier in person.</p></article><article><span class="about-number">02</span><div class="micro-label">OBJECTIVES</div><h3>Measure. Understand. Respond.</h3><p>Illustrate sensor-based water monitoring, centralised processing, device condition awareness and clear operator alerts.</p></article><article><span class="about-number">03</span><div class="micro-label">PROPOSED METHODOLOGY</div><h3>A simple sensing loop.</h3><p>Water sensors observe quality and flow; electrical sensors monitor selected operating conditions; the ESP32 processes readings and drives local indicators.</p></article><article><span class="about-number">04</span><div class="micro-label">SYSTEM ARCHITECTURE</div><h3>One controller, multiple signals.</h3><p>Sensor and safety inputs → ESP32 controller → local display and alerts → illustrative wireless dashboard pathway.</p></article><article><span class="about-number">05</span><div class="micro-label">HARDWARE ARCHITECTURE</div><h3>Water path meets electronics.</h3><p>Purification stages and a 12V pump form the hydraulic concept; sensors, power circuitry, controller, OLED and indicators form the monitoring concept.</p></article><article><span class="about-number">06</span><div class="micro-label">SOFTWARE ARCHITECTURE</div><h3>Readable, modular feedback.</h3><p>Conceptual flow: sample sensors → validate and evaluate → update display/status → notify on meaningful conditions. Website simulation is browser-only.</p></article><article><span class="about-number">07</span><div class="micro-label">ADVANTAGES & APPLICATIONS</div><h3>Awareness supports upkeep.</h3><p>Remote visibility can help households, campus facilities, labs and small installations spot changes sooner and plan maintenance from condition trends.</p></article><article><span class="about-number">08</span><div class="micro-label">FUTURE SCOPE</div><h3>From concept to validated system.</h3><p>Future work may verify sensor calibration, pin mapping, thresholds and fault rules against the built hardware before implementing a real communication layer.</p></article></div>
+      <div class="architecture-strip"><div><span class="micro-label">CONCEPTUAL DATA PATH</span><p><span>WATER + DEVICE SENSORS</span><b>→</b><span>ESP32 CONTROLLER</span><b>→</b><span>LOCAL STATUS + ILLUSTRATIVE REMOTE VIEW</span></p></div><span class="simulation-stamp">SIMULATED<br/>DEMONSTRATION</span></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="section-wrap footer-inner"><a class="brand" href="#home"><span class="brand-mark">≈</span> AQUA / SYSTEMS</a><span>REMOTE INTEGRATED WATER PURIFIER MANAGEMENT SYSTEM</span><span>ENGINEERING DEMONSTRATION · 2026</span></div></footer>
+
+  <div class="modal-backdrop" id="componentModal" aria-hidden="true"><div class="component-modal" role="dialog" aria-modal="true" aria-labelledby="modalName"><button class="modal-close" id="closeModal" aria-label="Close details">×</button><div class="modal-head"><div class="inspector-icon" id="modalIcon">◈</div><div><div class="micro-label" id="modalCategory">COMPONENT</div><h2 id="modalName">Component name</h2><p id="modalSummary"></p></div></div><div class="modal-body"><div class="modal-visual" id="modalVisual"></div><div class="modal-details" id="modalDetails"></div></div><div class="modal-foot"><span>PIN ASSIGNMENTS ARE CONFIGURABLE / TO BE VERIFIED AGAINST THE PHYSICAL BUILD</span><button class="button button-quiet" id="modalDone">Close details</button></div></div></div>
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
