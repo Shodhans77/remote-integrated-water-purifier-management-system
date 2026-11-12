@@ -12,4 +12,4 @@ This repository contains two distinct, self-contained demonstration websites:
 2. Run `python -m http.server 8000`.
 3. Open `http://localhost:8000/` for the original project showcase, `http://localhost:8000/portal.html` for the full service portal, or `http://localhost:8000/easy-dashboard.html` for the simple dashboard.
 
-Both websites use simulated demonstration data. The portal does not connect to ESP32 hardware, provide real authentication, or send email, SMS or WhatsApp alerts.
+All readings and alerts are simulated. The simple dashboard starts with a demo sign-in choice for Customer or Service Team; this is only a role preview and is not real account authentication. Neither dashboard connects to ESP32 hardware or sends email, SMS or WhatsApp alerts.

@@ -24,6 +24,7 @@ const conditions={
  filter:{level:'warning',title:'Filter may need changing',message:'The filter estimate is low. Ask the service team to check it.',apply:u=>{u.filter=12}}
 };
 let units=structuredClone(originalUnits),alerts=structuredClone(originalAlerts),role='customer';
+let selectedLoginRole='customer';
 const $=s=>document.querySelector(s),fmt=v=>Number.isInteger(v)?String(v):Number(v).toFixed(1),getUnit=id=>units.find(u=>u.id===id);
 function visibleUnits(){return units.filter(u=>(role==='provider'||u.customer)&&($('#buildingSelect').value==='all'||u.building===$('#buildingSelect').value))}
 function openFor(id){return alerts.filter(a=>a.unit===id&&a.open)}
@@ -37,6 +38,9 @@ function renderAlerts(){let list=alerts.filter(a=>role==='provider'||getUnit(a.u
 function renderAll(){renderBuildings();renderSummary();renderUnits();renderAlerts();const list=visibleUnits();$('#faultUnit').innerHTML=list.map(u=>`<option value="${u.id}">${u.building} · Floor ${String(u.floor).padStart(2,'0')} · ${u.code}</option>`).join('')}
 function showToast(text,critical=false){const toast=$('#toast');toast.textContent=text;toast.classList.toggle('critical',critical);toast.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),3500)}
 document.querySelectorAll('[data-role]').forEach(b=>b.addEventListener('click',()=>{role=b.dataset.role;document.querySelectorAll('[data-role]').forEach(x=>x.classList.toggle('active',x===b));$('#buildingSelect').value='all';renderAll()}));
+document.querySelectorAll('[data-login-role]').forEach(b=>b.addEventListener('click',()=>{selectedLoginRole=b.dataset.loginRole;document.querySelectorAll('[data-login-role]').forEach(x=>{const active=x===b;x.classList.toggle('selected',active);x.setAttribute('aria-pressed',String(active))})}));
+$('#loginContinue').addEventListener('click',()=>{role=selectedLoginRole;document.querySelectorAll('[data-role]').forEach(x=>x.classList.toggle('active',x.dataset.role===role));document.body.classList.remove('logged-out');renderAll()});
+$('#switchAccount').addEventListener('click',()=>{selectedLoginRole=role;document.querySelectorAll('[data-login-role]').forEach(x=>{const active=x.dataset.loginRole===selectedLoginRole;x.classList.toggle('selected',active);x.setAttribute('aria-pressed',String(active))});document.body.classList.add('logged-out')});
 $('#buildingSelect').addEventListener('change',renderAll);
 $('#simulateButton').addEventListener('click',()=>{const u=getUnit($('#faultUnit').value),f=conditions[$('#faultType').value];if(!u||!f)return;f.apply(u);const alert={id:`demo-${Date.now()}`,unit:u.id,type:$('#faultType').value,level:f.level,title:f.title,message:f.message,reading:$('#faultType').value==='tds'?`Water reading: ${u.tds} ppm`:`Demo sensor says: ${f.title.toLowerCase()}`,time:Date.now(),open:true};alerts.unshift(alert);renderAll();showToast(`${u.code}: ${f.title}. The assigned customer and service team can see this in their demo view.`,f.level==='critical')});
 $('#resetButton').addEventListener('click',()=>{units=structuredClone(originalUnits);alerts=structuredClone(originalAlerts);renderAll();showToast('The demo is back to its starting example.')});
