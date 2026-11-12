@@ -1,23 +1,23 @@
 # Remote Integrated Water Purifier Management System
 
-A self-contained virtual demonstration website for the final-year engineering project. It uses plain HTML, CSS and JavaScript; no build tools, dependencies, backend, ESP32 connection, MQTT broker or physical sensor connection are required.
+This repository contains a multi-building purifier service portal demo and the original engineering project showcase. It uses plain HTML, CSS and JavaScript with no build tools or external runtime dependencies.
 
-## Run the website
+## Run locally
 
 1. Open a terminal in this folder.
 2. Run `python -m http.server 8000`.
-3. Open `http://localhost:8000` in a browser.
+3. Visit `http://localhost:8000`.
 
-You can also open `index.html` directly, though a local server is recommended for predictable browser behavior.
+## Pages and files
 
-## Project files
+- `index.html` — AquaOps service portal with separate service-provider and customer dashboards.
+- `portal.css` — responsive light blue and lavender portal interface.
+- `portal.js` — sample buildings, purifier inventory, role views, assignments, faults and local notification behavior.
+- `project-demo.html` — original interactive engineering project showcase.
+- `styles.css` and `app.js` — styles and interactions for the engineering showcase.
 
-- `index.html` — page content and SVG purifier model.
-- `styles.css` — layout, responsive styles, model styling and animations.
-- `app.js` — component data, navigation, dashboard values and fault simulations.
+## Demo behavior and limits
 
-## Demonstration behavior
+The seeded portfolio has two sample buildings. Aqua Heights includes five floor-coded purifier units; the sample resident account is assigned only floors 02 and 05. Two example events are present at start: a TDS fluctuation on floor 02 and a leak on floor 05. The service-provider view can inspect every installation, while the customer view is filtered to assigned purifiers.
 
-All readings are simulated in the browser. Fault simulation changes dashboard cards, chart score, device status, phone values and notification history. Reset restores the initial demonstration state. No data leaves the browser.
-
-Component GPIO pins and wiring details are intentionally described as configurable or to be verified against the physical build. The 12V normally closed solenoid valve appears only as optional / planned hardware.
+Fault controls and assignments update `localStorage` in the current browser only. Alerts are simulated in-app; no email, SMS or WhatsApp is sent. No physical ESP32 or sensors are connected, and no real authentication or server-side access control is implemented. Do not use this demo as an operational monitoring service.
