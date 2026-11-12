@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eef7ff" />
+  <meta name="description" content="A multi-building purifier service portal demo with separate provider and customer dashboards." />
+  <title>AquaOps — Purifier Service Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body>
+  <div class="ambient ambient-blue"></div><div class="ambient ambient-purple"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="AquaOps home"><span class="brand-icon">≈</span><span>AQUA<span class="brand-slash">/</span>OPS<small>PURIFIER SERVICE CLOUD</small></span></a>
+    <nav class="top-links" aria-label="Main navigation"><a class="active" href="#dashboard">Overview</a><a href="#units">Purifiers</a><a href="#alerts">Alerts</a><a href="#assignments">Assignments</a></nav>
+    <div class="top-actions"><a class="project-link" href="index.html">Engineering showcase <span>↗</span></a><button class="icon-btn notification-trigger" id="notificationTrigger" aria-label="Open notification center">♧<i id="notificationBadge">2</i></button><button class="avatar" aria-label="Demo account">S</button></div>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+  </header>
+  <main id="top">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-top"><div class="sidebar-label">WORKSPACE</div><button class="workspace-select" id="buildingPicker"><span class="building-symbol">⌂</span><span><b id="selectedBuildingName">All buildings</b><small id="selectedBuildingMeta">2 locations · 8 units</small></span><span class="chevron">⌄</span></button><div class="building-menu" id="buildingMenu"></div></div>
+        <div class="sidebar-label role-label">DEMO ROLE</div>
+        <div class="role-switch" role="group" aria-label="Choose dashboard role"><button class="role-option active" data-role="provider"><span>◈</span><span><b>Service provider</b><small>All installations</small></span></button><button class="role-option" data-role="customer"><span>◇</span><span><b>Customer</b><small>Assigned purifiers</small></span></button></div>
+        <div class="sidebar-label nav-label">MANAGE</div>
+        <nav class="side-nav" aria-label="Workspace sections"><a class="selected" href="#dashboard"><span>▦</span>Overview</a><a href="#units"><span>◉</span>Purifier fleet <i id="unitNavCount">8</i></a><a href="#alerts"><span>⌁</span>Fault inbox <i class="nav-alert-count" id="alertNavCount">2</i></a><a href="#assignments" id="assignmentNav"><span>↔</span>Customer access</a></nav>
+        <div class="sidebar-spacer"></div>
+        <div class="demo-account"><div class="demo-account-icon">S</div><div><b id="accountName">Shodhan Shetty</b><small id="accountRole">SERVICE PROVIDER · DEMO</small></div><button aria-label="Account menu">···</button></div>
+        <div class="sidebar-foot"><span class="cloud-pulse"></span> LOCAL DEMONSTRATION MODE</div>
+      </aside>
+      <section class="main-content" id="dashboard">
+        <div class="page-top"><div class="breadcrumb"><span>WORKSPACE</span><b>/</b><span id="breadcrumbRole">PROVIDER OVERVIEW</span></div><div class="page-top-meta"><span class="live-chip"><i></i> SIMULATION ACTIVE</span><span class="today" id="todayLabel">12 NOV 2026</span></div></div>
+        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> REMOTE PURIFIER OPERATIONS</div><h1 id="welcomeTitle">A clear view of <em>every purifier.</em></h1><p id="welcomeDescription">Building health, unit status, and service alerts — together in one place.</p></div><button class="button button-outline" id="refreshData"><span class="refresh-icon">⟳</span> Refresh overview</button></div>
+        <div class="demo-ribbon"><span class="ribbon-icon">✳</span><div><b>INTERACTIVE DEMONSTRATION · SIMULATED DATA</b><small>Faults, readings, customer access and notifications run locally in this browser. Nothing is connected to physical ESP32 hardware.</small></div><button id="dismissRibbon" aria-label="Dismiss notice">×</button></div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+        <div class="priority-row"><div class="priority-title"><div><span class="section-kicker">NEEDS ATTENTION</span><h2 id="priorityHeading">Priority service events</h2></div><a href="#alerts" class="inline-link">Open alert inbox <span>→</span></a></div><div class="priority-grid" id="priorityGrid"></div></div>
+        <div class="overview-grid">
+          <section class="panel fleet-panel" id="units"><div class="panel-heading"><div><span class="section-kicker">FLEET OVERVIEW</span><h2 id="fleetHeading">Purifier installations</h2><p id="fleetDescription">All units across your service locations.</p></div><div class="panel-tools"><label class="search-field"><span>⌕</span><input id="unitSearch" type="search" placeholder="Search code or floor" aria-label="Search purifiers" /></label><select id="unitFilter" aria-label="Filter purifiers"><option value="all">All statuses</option><option value="critical">Critical</option><option value="warning">Warning</option><option value="normal">Normal</option></select></div></div><div class="unit-table-wrap"><table class="unit-table"><thead><tr><th>PURIFIER / FLOOR</th><th>BUILDING</th><th>WATER QUALITY</th><th>PUMP / FILTER</th><th>LAST UPDATE</th><th>STATUS</th><th></th></tr></thead><tbody id="unitTable"></tbody></table></div><div class="table-foot"><span id="tableSummary">Showing 8 purifier installations</span><span>DEMONSTRATION DATA <i class="tiny-blue-dot"></i></span></div></section>
+          <section class="panel fluctuation-panel"><div class="panel-heading"><div><span class="section-kicker">SENSOR TELEMETRY</span><h2>Reading fluctuations</h2><p>Simulated TDS history · selected unit</p></div><button class="chart-menu" id="chartMetric">TDS · PPM <span>⌄</span></button></div><div class="selected-unit-chip"><span class="unit-mini-icon">≈</span><span><b id="chartUnitName">AH-01-F05-P05</b><small id="chartUnitBuilding">Aqua Heights · Floor 05</small></span><span class="chart-current" id="chartCurrent">612 <small>ppm</small></span></div><div class="fluctuation-chart" id="fluctuationChart"></div><div class="chart-times"><span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span><span>NOW</span></div><div class="threshold-legend"><span><i class="legend-line"></i> Measured reading</span><span><i class="legend-limit"></i> Configured demo threshold</span></div></section>
+        </div>
+        <div class="lower-grid">
+          <section class="panel activity-panel" id="alerts"><div class="panel-heading"><div><span class="section-kicker">SHARED FAULT INBOX</span><h2>Recent alerts</h2><p>Notices route to the assigned customer and their service provider.</p></div><button class="text-icon-button" id="seeAllAlerts">View history <span>↗</span></button></div><div class="alert-feed" id="alertFeed"></div></section>
+          <section class="panel building-panel"><div class="panel-heading"><div><span class="section-kicker">BUILDING HEALTH</span><h2>Locations at a glance</h2><p id="buildingPanelSubtitle">Service portfolio · simulated</p></div><span class="location-icon">⌂</span></div><div class="building-list" id="buildingList"></div><div class="building-foot"><span><i class="key-dot"></i> NORMAL</span><span><i class="key-dot warning-dot"></i> WARNING</span><span><i class="key-dot critical-dot"></i> CRITICAL</span></div></section>
+        </div>
+        <section class="panel assignment-panel" id="assignments"><div class="panel-heading"><div><span class="section-kicker">CUSTOMER ACCESS</span><h2>Assigned purifier codes</h2><p>Customers see only units assigned to their account. The provider can manage each assignment.</p></div><button class="button button-primary" id="openAssignment"><span>＋</span> Assign purifier</button></div><div class="assignment-strip" id="assignmentStrip"></div></section>
+        <section class="simulate-panel"><div class="simulate-icon">⌁</div><div class="simulate-copy"><span class="section-kicker">PRESENTATION CONTROLS</span><h2>Demonstrate an abnormal reading</h2><p>Choose a purifier and condition. The selected unit, customer view, provider inbox, and notification history update together.</p></div><div class="simulate-controls"><label><span>PURIFIER</span><select id="faultUnit"></select></label><label><span>CONDITION</span><select id="faultType"><option value="leak">Water leak detected · Critical</option><option value="tds">TDS spike · Warning</option><option value="ph">Abnormal pH fluctuation · Warning</option><option value="turbidity">Turbidity spike · Warning</option><option value="lowVoltage">Low voltage · Warning</option><option value="dryRun">No flow / dry-run suspected · Critical</option><option value="overload">Pump overload · Critical</option><option value="filter">Filter replacement due · Service</option></select></label><button class="button button-primary" id="triggerFault">Simulate alert <span>↗</span></button><button class="reset-button" id="resetDemo">Reset demo</button></div></section>
+        <footer class="app-footer"><span>≈ AQUA/OPS <small>PURIFIER SERVICE CLOUD</small></span><span>NO LIVE HARDWARE · ALL DEMONSTRATION VALUES ARE SIMULATED</span><a href="index.html">Engineering project showcase ↗</a></footer>
+      </section>
+    </div>
+  </main>
+  <div class="modal-backdrop" id="unitModal" aria-hidden="true"><section class="modal-card unit-detail-modal" role="dialog" aria-modal="true" aria-labelledby="unitModalTitle"><button class="modal-close" data-close="unitModal" aria-label="Close unit details">×</button><div id="unitModalContent"></div></section></div>
+  <div class="modal-backdrop" id="assignmentModal" aria-hidden="true"><section class="modal-card assignment-modal" role="dialog" aria-modal="true" aria-labelledby="assignmentTitle"><button class="modal-close" data-close="assignmentModal" aria-label="Close assignment form">×</button><span class="section-kicker">CUSTOMER ACCESS CONTROL</span><h2 id="assignmentTitle">Assign a purifier</h2><p>Connect a purifier code with the demo customer account. Customers will then see its status and alerts.</p><label class="form-label">PURIFIER CODE<select id="assignUnit"></select></label><label class="form-label">CUSTOMER ACCOUNT<select id="assignCustomer"></select></label><div class="form-note">This is a local demonstration assignment. It does not create a real customer account.</div><button class="button button-primary full-button" id="saveAssignment">Save assignment <span>↗</span></button></section></div>
+  <aside class="notification-drawer" id="notificationDrawer" aria-hidden="true"><div class="drawer-heading"><div><span class="section-kicker">IN-APP NOTIFICATIONS</span><h2>Notification center</h2></div><button class="modal-close drawer-close" id="closeDrawer" aria-label="Close notifications">×</button></div><p class="drawer-summary">Fault updates for this dashboard role. Customer and provider inboxes remain distinct.</p><div id="notificationList" class="notification-list"></div><div class="drawer-foot">SIMULATED LOCALLY · NO EMAIL / SMS SENT</div></aside>
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <script src="portal.js"></script>
+</body>
+</html>
