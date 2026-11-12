@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f3f9ff" />
+  <meta name="description" content="A simple, simulated dashboard for purifier customers and service providers." />
+  <title>AquaCare — Simple Purifier Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="easy-dashboard.css" />
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="index.html"><span>≈</span><b>AquaCare<small>YOUR PURIFIER, MADE SIMPLE</small></b></a><div class="topbar-right"><span class="demo-pill"><i></i> Practice demo</span><a class="back-link" href="index.html">Project home ↗</a></div></header>
+  <main class="page-shell">
+    <section class="welcome"><div><span class="eyebrow">YOUR WATER AT A GLANCE</span><h1>Good morning, <em>Shodhan.</em></h1><p>Here’s a simple update on the water purifiers connected to this demo account.</p></div><div class="role-box"><span>Who are you viewing as?</span><div class="role-switch" role="group" aria-label="Choose dashboard view"><button class="role-button active" data-role="customer">Customer</button><button class="role-button" data-role="provider">Service team</button></div></div></section>
+    <aside class="demo-note"><span>ⓘ</span><p><b>This is a practice demo.</b> The numbers and alerts are made up for demonstration. This page is not connected to real purifiers.</p></aside>
+    <section class="summary-grid" id="summaryGrid" aria-label="Simple summary"></section>
+    <section class="section-heading"><div><span class="eyebrow">YOUR EQUIPMENT</span><h2 id="unitsHeading">Purifiers assigned to you</h2><p id="unitsDescription">Tap “See details” to learn more about each purifier.</p></div><label class="building-filter"><span>Building</span><select id="buildingSelect" aria-label="Choose a building"></select></label></section>
+    <section class="unit-grid" id="unitGrid" aria-live="polite"></section>
+    <section class="alert-section"><div class="section-heading alert-heading"><div><span class="eyebrow">RECENT UPDATES</span><h2 id="alertHeading">Updates about your purifiers</h2><p>Warnings are here to help you check what’s happening. They do not automatically mean you have to pay.</p></div><span class="alert-count" id="alertCount">0 updates</span></div><div class="updates-list" id="updatesList"></div><div class="billing-help"><span>✓</span><p><b>No surprise service charges.</b> A warning by itself does not create a bill. A service charge would only be considered after a real fault is checked and confirmed.</p></div></section>
+    <section class="demo-tools"><div><span class="eyebrow">SHOW HOW AN ALERT WORKS</span><h2>Try a made-up problem</h2><p>Choose a purifier and a problem to see the dashboard update. This only changes the practice demo.</p></div><div class="tool-controls"><label><span>Which purifier?</span><select id="faultUnit"></select></label><label><span>What should we pretend happened?</span><select id="faultType"><option value="leak">Water leak — urgent</option><option value="tds">Water reading changed</option><option value="ph">Water pH needs checking</option><option value="turbidity">Water looks cloudy</option><option value="lowVoltage">Power is too low</option><option value="dryRun">No water is flowing</option><option value="overload">Pump is working too hard</option><option value="filter">Filter may need changing</option></select></label><button class="primary-button" id="simulateButton">Show me an alert <span>→</span></button><button class="reset-button" id="resetButton">Start over</button></div></section>
+    <footer class="footer"><span>All information on this page is simulated.</span><nav><a href="index.html">Project showcase</a><a href="portal.html">Full service portal</a></nav></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="easy-dashboard.js"></script>
+</body>
+</html>
